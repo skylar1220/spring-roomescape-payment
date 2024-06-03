@@ -1,6 +1,5 @@
 package roomescape.dto.waiting;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import roomescape.domain.reservation.Reservation;
@@ -11,7 +10,7 @@ public record WaitingResponse(
         String member,
         String theme,
         LocalDate date,
-        @JsonFormat(pattern = "HH-mm") LocalTime startAt
+        LocalTime startAt
 ) {
 
     public static WaitingResponse from(Waiting waiting) {
