@@ -15,6 +15,7 @@ import roomescape.dto.payment.PaymentResponse;
 import roomescape.dto.payment.TossErrorResponse;
 import roomescape.exception.PaymentException;
 import roomescape.exception.PaymentInternalException;
+import roomescape.util.LogSaver;
 
 /**
  * @see <a href="https://docs.tosspayments.com/reference/error-codes">토스 결제 오류 코드 정의서</a>
@@ -25,16 +26,18 @@ public class TossPaymentClient {
     @Value("${secret-key}")
     private String secretKey;
     private final RestClient restClient;
+    private final LogSaver logSaver;
 
-    public TossPaymentClient(RestClient.Builder restClient) {
+    public TossPaymentClient(RestClient.Builder restClient, final LogSaver logSaver) {
         this.restClient = restClient.build();
+        this.logSaver = logSaver;
     }
 
     public PaymentResponse confirm(PaymentRequest paymentRequest) {
         String authorizationKey = secretKey + ":";
 
         try {
-            return restClient.post()
+            PaymentResponse paymentResponse = restClient.post()
                     .uri("https://api.tosspayments.com/v1/payments/confirm")
                     .contentType(MediaType.APPLICATION_JSON)
                     .header("Authorization", "Basic " + Base64.getEncoder()
@@ -42,6 +45,10 @@ public class TossPaymentClient {
                     .body(paymentRequest)
                     .retrieve()
                     .body(PaymentResponse.class);
+
+            logSaver.logInfo(paymentRequest);
+            logSaver.logInfo(paymentResponse);
+            return paymentResponse;
 
         } catch (HttpClientErrorException | HttpServerErrorException e) {
             TossErrorResponse errorResponse = getErrorResponse(e);

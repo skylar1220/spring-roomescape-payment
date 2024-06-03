@@ -9,17 +9,18 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withUnauthorizedRequest;
 
 import java.math.BigDecimal;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.client.MockRestServiceServer;
 import roomescape.dto.payment.PaymentRequest;
 import roomescape.exception.PaymentException;
+import roomescape.util.LogSaver;
 
 @RestClientTest(TossPaymentClient.class)
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
@@ -28,10 +29,13 @@ class TossPaymentClientTest {
     @Autowired
     TossPaymentClient tossPaymentClient;
 
+    @MockBean
+    LogSaver logSaver;
+
     @Autowired
     MockRestServiceServer server;
 
-    @Disabled
+//    @Disabled
     @Test
     void 결제_성공() {
         // given
@@ -45,7 +49,7 @@ class TossPaymentClientTest {
         assertThatCode(() -> tossPaymentClient.confirm(paymentRequest)).doesNotThrowAnyException();
     }
 
-    @Disabled
+//    @Disabled
     @Test
     void 결제_BAD_REQUEST시_예외_발생() {
         // given
@@ -66,7 +70,7 @@ class TossPaymentClientTest {
         assertThatThrownBy(() -> tossPaymentClient.confirm(paymentRequest)).isInstanceOf(PaymentException.class);
     }
 
-    @Disabled
+//    @Disabled
     @Test
     void 결제_SERVER_ERROR시_예외_발생() {
         // given

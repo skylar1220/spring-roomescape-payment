@@ -11,7 +11,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 class GlobalExceptionHandler {
 
-    private final Logger log = LoggerFactory.getLogger(getClass());
+    private final Logger log;
+
+    private GlobalExceptionHandler() {
+        log = LoggerFactory.getLogger(getClass());
+    }
 
     @ExceptionHandler(value = HttpMessageNotReadableException.class)
     private ProblemDetail handleHttpMessageNotReadableException(HttpMessageNotReadableException e) {
