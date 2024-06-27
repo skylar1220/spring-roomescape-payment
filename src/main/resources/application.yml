@@ -41,3 +41,10 @@ payment:
       secret-key: ${secret-key}
       connection-timeout-seconds: 1
       read-timeout-seconds: 60
+
+#springdoc:
+#  api-docs:
+#    path: /api-docs
+#  swagger-ui:
+#    operations-sorter: alpha
+#    tags-sorter: alpha
