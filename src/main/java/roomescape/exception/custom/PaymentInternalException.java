@@ -1,4 +1,4 @@
-package roomescape.exception;
+package roomescape.exception.custom;
 
 public class PaymentInternalException extends RuntimeException {
 

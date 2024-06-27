@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.jdbc.Sql;
 import roomescape.domain.reservation.Reservation;
-import roomescape.exception.RoomEscapeException;
+import roomescape.exception.custom.RoomEscapeException;
 import roomescape.repository.ReservationRepository;
 
 @Sql("/all-test-data.sql")

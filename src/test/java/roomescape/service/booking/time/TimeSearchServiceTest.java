@@ -17,7 +17,7 @@ import org.springframework.test.context.jdbc.Sql;
 import roomescape.domain.time.ReservationTime;
 import roomescape.dto.reservationtime.ReservationTimeResponse;
 import roomescape.dto.reservationtime.TimeWithAvailableResponse;
-import roomescape.exception.RoomEscapeException;
+import roomescape.exception.custom.RoomEscapeException;
 import roomescape.repository.ReservationTimeRepository;
 import roomescape.service.booking.time.module.TimeSearchService;
 

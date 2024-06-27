@@ -1,9 +1,10 @@
-package roomescape.exception;
+package roomescape.exception.custom;
 
 import org.springframework.http.HttpStatusCode;
 import roomescape.dto.payment.CancelRequest;
 
 public class PaymentCancelException extends RuntimeException {
+//public class PaymentCancelException implements PaymentException {
 
     private final HttpStatusCode clientStatusCode;
     private final CancelRequest cancelRequest;

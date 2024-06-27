@@ -13,7 +13,7 @@ import org.springframework.test.context.jdbc.Sql;
 import roomescape.dto.login.LoginMember;
 import roomescape.dto.login.LoginRequest;
 import roomescape.dto.token.TokenDto;
-import roomescape.exception.RoomEscapeException;
+import roomescape.exception.custom.RoomEscapeException;
 import roomescape.repository.MemberRepository;
 
 @Sql("/member-test-data.sql")

@@ -1,7 +1,7 @@
 package roomescape.domain.waiting;
 
 import jakarta.persistence.Embeddable;
-import roomescape.exception.RoomEscapeException;
+import roomescape.exception.custom.RoomEscapeException;
 
 @Embeddable
 public class WaitingOrder {

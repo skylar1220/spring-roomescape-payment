@@ -6,7 +6,7 @@ import roomescape.domain.reservation.Reservation;
 import roomescape.domain.reservation.Status;
 import roomescape.dto.reservation.ReservationResponse;
 import roomescape.dto.reservation.ReservationfilterRequest;
-import roomescape.exception.RoomEscapeException;
+import roomescape.exception.custom.RoomEscapeException;
 import roomescape.repository.ReservationRepository;
 
 @Service

@@ -1,6 +1,6 @@
 package roomescape.infrastructure.auth;
 
-import roomescape.exception.RoomEscapeException;
+import roomescape.exception.custom.RoomEscapeException;
 
 public class PasswordEncoder {
 

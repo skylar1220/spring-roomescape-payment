@@ -1,4 +1,4 @@
-package roomescape.infrastructure.payment;
+package roomescape.infrastructure.payment.toss;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -13,9 +13,9 @@ import roomescape.dto.payment.CancelRequest;
 import roomescape.dto.payment.PaymentRequest;
 import roomescape.dto.payment.PaymentResponse;
 import roomescape.dto.payment.TossErrorResponse;
-import roomescape.exception.PaymentCancelException;
-import roomescape.exception.PaymentException;
-import roomescape.exception.PaymentInternalException;
+import roomescape.exception.custom.PaymentCancelException;
+import roomescape.exception.custom.PaymentException;
+import roomescape.exception.custom.PaymentInternalException;
 import roomescape.util.LogSaver;
 
 /**

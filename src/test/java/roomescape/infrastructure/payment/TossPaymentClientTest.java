@@ -22,7 +22,10 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.web.client.RestClient;
 import roomescape.dto.payment.PaymentRequest;
-import roomescape.exception.PaymentException;
+import roomescape.exception.custom.PaymentException;
+import roomescape.infrastructure.payment.toss.TossPaymentClient;
+import roomescape.infrastructure.payment.config.PaymentConfig;
+import roomescape.infrastructure.payment.config.PaymentProperties;
 import roomescape.util.LogSaver;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)

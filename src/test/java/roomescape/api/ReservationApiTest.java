@@ -25,7 +25,7 @@ import roomescape.dto.payment.PaymentRequest;
 import roomescape.dto.payment.PaymentResponse;
 import roomescape.dto.reservation.ReservationRequest;
 import roomescape.dto.reservation.UserReservationPaymentRequest;
-import roomescape.infrastructure.payment.TossPaymentClient;
+import roomescape.infrastructure.payment.toss.TossPaymentClient;
 
 @Sql("/member-theme-time-test-data.sql")
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)

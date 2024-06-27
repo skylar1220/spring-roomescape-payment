@@ -10,7 +10,7 @@ import roomescape.domain.theme.Theme;
 import roomescape.domain.time.ReservationTime;
 import roomescape.domain.waiting.Waiting;
 import roomescape.dto.reservation.ReservationRequest;
-import roomescape.exception.RoomEscapeException;
+import roomescape.exception.custom.RoomEscapeException;
 import roomescape.repository.MemberRepository;
 import roomescape.repository.ReservationRepository;
 import roomescape.repository.ReservationTimeRepository;

@@ -7,7 +7,7 @@ import roomescape.dto.payment.CancelRequest;
 import roomescape.dto.payment.PaymentRequest;
 import roomescape.dto.payment.PaymentResponse;
 import roomescape.dto.reservation.UserReservationPaymentRequest;
-import roomescape.infrastructure.payment.TossPaymentClient;
+import roomescape.infrastructure.payment.toss.TossPaymentClient;
 import roomescape.repository.PaymentRepository;
 
 @Service

@@ -1,4 +1,4 @@
-package roomescape.exception;
+package roomescape.exception.handler;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -9,6 +9,10 @@ import org.springframework.http.ProblemDetail;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import roomescape.exception.custom.PaymentCancelException;
+import roomescape.exception.custom.PaymentException;
+import roomescape.exception.custom.PaymentInternalException;
+import roomescape.exception.custom.RoomEscapeException;
 
 @ControllerAdvice
 class GlobalExceptionHandler {

@@ -1,4 +1,4 @@
-package roomescape.infrastructure.payment;
+package roomescape.infrastructure.payment.config;
 
 public record PaymentProperty(String vendor,
                               String url,

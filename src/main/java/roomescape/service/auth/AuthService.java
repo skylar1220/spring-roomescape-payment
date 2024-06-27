@@ -9,7 +9,7 @@ import roomescape.dto.login.LoginMember;
 import roomescape.dto.login.LoginRequest;
 import roomescape.dto.member.MemberPayload;
 import roomescape.dto.token.TokenDto;
-import roomescape.exception.RoomEscapeException;
+import roomescape.exception.custom.RoomEscapeException;
 import roomescape.infrastructure.auth.JwtProvider;
 import roomescape.infrastructure.auth.PasswordEncoder;
 import roomescape.repository.MemberRepository;
@@ -37,6 +37,11 @@ public class AuthService {
     public boolean isValidateToken(TokenDto tokenDto) {
         String token = tokenDto.accessToken();
         return token != null && jwtProvider.isValidateToken(token);
+    }
+
+    public Long extractMemberIdByToken(final TokenDto tokenDto) {
+        String token = tokenDto.accessToken();
+        return Long.parseLong(jwtProvider.getSubject(token));
     }
 
     public LoginMember extractLoginMemberByToken(TokenDto tokenDto) throws Exception {

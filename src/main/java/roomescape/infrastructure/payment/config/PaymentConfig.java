@@ -1,4 +1,4 @@
-package roomescape.infrastructure.payment;
+package roomescape.infrastructure.payment.config;
 
 import java.time.Duration;
 import java.util.Base64;
@@ -13,6 +13,7 @@ import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.JdkClientHttpRequestFactory;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestClient.Builder;
+import roomescape.infrastructure.payment.toss.TossPaymentClient;
 import roomescape.util.LogSaver;
 
 @Configuration

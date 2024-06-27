@@ -1,7 +1,7 @@
 package roomescape.domain.member;
 
 import jakarta.persistence.Embeddable;
-import roomescape.exception.RoomEscapeException;
+import roomescape.exception.custom.RoomEscapeException;
 
 @Embeddable
 public class Password {
