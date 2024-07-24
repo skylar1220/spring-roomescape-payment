@@ -1,6 +1,9 @@
 name: Build test with Gradle
 
 on:
+  push:
+    branches:
+      - ci
   pull_request:
     branches:
       - ci
