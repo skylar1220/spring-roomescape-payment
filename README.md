@@ -16,3 +16,48 @@
 - [x] Database ERD 를 작성하고, 작성 시 테이블 간의 관계를 표현합니다.
 - [x] 작성한 API 문서와, ERD는 PR 요청시 리뷰어가 확인 할 수 있도록 PR내용에 포함해주세요.
 
+
+# 리팩토링 목록
+- [ ] swagger - jacksonConfig 충돌 해결
+- [ ] 트랜잭션 (밖에도)안에도 붙여줘야하는 곳 붙여주기 
+- [ ] 권한도 예외를 따로 둬야하지 않을까?
+- [ ] 지금 waiting이 reservationId를 갖고있는데, 해당된 reserId가 아니라 자기의 reserId라 해당 reserId를 갖고있게 하는 쪽이 나을듯
+- [ ] reservationService - findReservationByMemberId 부분에 팬딩이 자주 등장하는 기분
+- [ ] 타임아웃시_예외_발생() 테스트 실행방법 찾기
+- [ ] 내예약 e2e 테스트 추가
+- [ ] null 반환하는 곳 처리
+- [ ] osiv 끔에 따라 proxy null나는데 있을것
+- [ ] 하위 서비스에서 엔티티 반환하기
+- [ ] 관리자가 예약을 추가한다면 결제대기? 예약? 그러다면 pay정보는 npe? 
+- [ ] 로직 바뀜에 따른 서비스 테스트 추가하기
+- [ ] 예약시 결제 정보 db 저장 테스트 추가
+- [ ] api 문서 자동화 툴 적용
+- [ ] ReservationPayment 네이밍 애매
+- [ ] reservationService - findReservationByMemberId 메서드 분리
+
+# 주석
+
+//    //    @Disabled
+//    @Test
+//    void 타임아웃시_예외_발생() {
+//        // given
+//
+//        String errorResponse = """
+//                {
+//                  "code": "NOT_FOUND_PAYMENT",
+//                  "message": "존재하지 않는 결제 입니다."
+//                }
+//                """;
+//
+//        server.expect(requestTo("https://api.tosspayments.com/v1/payments/confirm"))
+//                .andRespond(withException(new ResourceAccessException("요청 시간을 초과하였습니다.")).body(errorResponse).contentType(MediaType.APPLICATION_JSON));
+////                .andRespond(withBadRequest().body(errorResponse).contentType(MediaType.APPLICATION_JSON));
+//
+//        PaymentRequest paymentRequest = new PaymentRequest("paymentKey", "orderId", BigDecimal.valueOf(1000),
+//                "paymentType");
+//
+//        // when && then
+//        assertThatThrownBy(() -> tossPaymentClient.confirm(paymentRequest))
+//                .isInstanceOf(PaymentException.class)
+//                .hasMessage("요청 시간을 초과하였습니다.");
+//    }
