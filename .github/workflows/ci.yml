@@ -6,7 +6,7 @@ on:
       - ci
   pull_request:
     branches:
-      - ci
+      - main
 
 jobs:
   build:
