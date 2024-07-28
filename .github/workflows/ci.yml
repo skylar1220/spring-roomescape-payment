@@ -10,6 +10,11 @@ on:
 
 jobs:
   build:
+    permissions:
+      contents: none
+#      issues: read
+#      checks: write
+#      pull-requests: write
     runs-on: ubuntu-latest
 
     steps:
@@ -19,9 +24,23 @@ jobs:
       - name: Setup JDK Corretto using cached gradle dependencies
         uses: actions/setup-java@v4
         with:
-         distribution: 'corretto'
-         java-version: 17
-         cache: 'gradle'
+          distribution: 'corretto'
+          java-version: 17
+          cache: 'gradle'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: 8.8
 
       - name: Build and test with gradle
-        run: ./gradlew test
+        run: |
+          cd ./backend
+          ./gradlew test
+
+      - name: Publish test results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          files: |
+            ./backend/build/test-results/**/*.xml
