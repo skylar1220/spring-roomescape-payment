@@ -65,6 +65,11 @@ jobs:
           name: ${{ env.ARTIFACT_NAME }}
           path: ${{ env.ARTIFACT_DIRECTORY }}
 
+      - name: Add SSH key
+        uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY }}
+
       # 80 포트에 열려있는 프로세스를 확인하고, 존재한다면 환경변수를 설정한다
       # well-known port (~1024)를 확인하거나 바인딩, 종료할 때에는 권한이 필요하다
       # bash에서 실패하는 경우 전체 job이 실패하므로, || (or) true 연산을 진행한다
@@ -95,6 +100,8 @@ jobs:
 
       - name: Start server
         run: |
-          sudo nohup java -jar \
-          ${{ env.ARTIFACT_DIRECTORY }}/${{ env.ARTIFACT_NAME }}.jar \
-          --server.port=80 &
+#          sudo nohup java -jar \
+#          ${{ env.ARTIFACT_DIRECTORY }}/${{ env.ARTIFACT_NAME }}.jar \
+#          --server.port=80 &
+          scp -o StrictHostKeyChecking=no ${{ env.ARTIFACT_DIRECTORY }}/${{ env.ARTIFACT_NAME }}.jar ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/path/to/deploy/
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} 'nohup java -jar /path/to/deploy/${{ env.ARTIFACT_NAME }}.jar --server.port=80 &'
