@@ -50,6 +50,7 @@ class ReservationController {
         PaymentResponse paymentResponse = paymentService.payByToss(userReservationPaymentRequest);
         ReservationResponse reservationResponse = reservationService.registerReservationPayments(
                 userReservationPaymentRequest, memberId, paymentResponse);
+
         return ResponseEntity.created(URI.create("/reservations/" + reservationResponse.id()))
                 .body(reservationResponse);
     }
