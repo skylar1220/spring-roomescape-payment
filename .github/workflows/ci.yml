@@ -35,7 +35,6 @@ jobs:
 
       - name: Build and test with gradle
         run: |
-          cd ./backend
           ./gradlew test
 
       - name: Publish test results
@@ -43,4 +42,4 @@ jobs:
         if: always()
         with:
           files: |
-            ./backend/build/test-results/**/*.xml
+            ./build/test-results/**/*.xml
