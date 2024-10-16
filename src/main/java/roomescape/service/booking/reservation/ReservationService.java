@@ -35,8 +35,7 @@ public class ReservationService {
                               ReservationRegisterService reservationRegisterService,
                               ReservationSearchService reservationSearchService,
                               final PaymentService paymentService,
-                              final WaitingService waitingService
-    ) {
+                              final WaitingService waitingService) {
         this.reservationCancelService = reservationCancelService;
         this.reservationRegisterService = reservationRegisterService;
         this.reservationSearchService = reservationSearchService;
