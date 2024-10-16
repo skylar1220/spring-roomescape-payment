@@ -6,11 +6,11 @@ on:
       - ci
 
 jobs:
-  test-ubuntu:
-    runs-on: ubuntu-latest
+  test-concurrency:
+    runs-on: [ubuntu-latest, windows-latest] # 여러 runs-on을 지정합니다.
     concurrency:
       group: sequential-test
-      cancel-in-progress: false
+      cancel-in-progress: false # 이전 작업을 취소하지 않음
 
     steps:
       - name: Checkout to current repository
@@ -19,21 +19,5 @@ jobs:
       - name: Sleep to simulate long-running task
         run: |
           echo "Running on ${{ runner.os }}..."
-          sleep 10 # 대기
-          echo "${{ runner.os }} task completed."
-
-  test-windows:
-    runs-on: windows-latest
-    concurrency:
-      group: sequential-test
-      cancel-in-progress: false
-
-    steps:
-      - name: Checkout to current repository
-        uses: actions/checkout@v4
-
-      - name: Sleep to simulate long-running task
-        run: |
-          echo "Running on ${{ runner.os }}..."
-          sleep 10 # 대기
+          sleep 10 # 각 실행 환경에서 10초 대기
           echo "${{ runner.os }} task completed."
