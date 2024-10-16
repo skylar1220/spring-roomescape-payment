@@ -80,7 +80,6 @@ public class ReservationService {
         reservationPaymentResponses.addAll(getReservedReservations(reservations));
         reservationPaymentResponses.addAll(getPendingReservations(reservations));
         reservationPaymentResponses.addAll(getWaitingReservations(reservations));
-
         return reservationPaymentResponses;
     }
 
