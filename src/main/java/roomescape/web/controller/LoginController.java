@@ -41,8 +41,7 @@ class LoginController {
     }
 
     private ResponseCookie createResponseCookie(TokenDto loginToken) {
-        return ResponseCookie
-                .from("token", loginToken.accessToken())
+        return ResponseCookie.from("token", loginToken.accessToken())
                 .path("/")
                 .httpOnly(true)
                 .build();
