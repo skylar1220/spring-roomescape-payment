@@ -20,14 +20,11 @@ jobs:
           echo "${{ runner.os }} task completed."
 
   test-concurrency:
-    runs-on: ${{ matrix.os }}  # 매트릭스에서 OS를 동적으로 지정합니다.
+    runs-on: ${{ matrix.runner }}  # 매트릭스에서 OS를 동적으로 지정합니다.
     strategy:
       max-parallel: 1
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]  # 여러 OS 지정
-    concurrency:
-      group: sequential-test
-      cancel-in-progress: false # 이전 작업을 취소하지 않음
+        runner: [ubuntu-latest, windows-latest, macos-latest]  # 여러 OS 지정
 
     steps:
       - name: Checkout to current repository
