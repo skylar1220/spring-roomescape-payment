@@ -24,7 +24,7 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        runner: [ubuntu-latest, windows-latest, macos-latest]  # 여러 OS 지정
+        runner: [ubuntu-latest, windows-latest]  # 여러 OS 지정
 
     steps:
       - name: Checkout to current repository
