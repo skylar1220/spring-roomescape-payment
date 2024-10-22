@@ -1,4 +1,4 @@
-name: Concurrency Test
+name: Concurrency Test2
 
 on:
   push:
