@@ -16,7 +16,7 @@ jobs:
       - name: Sleep to simulate long-running task
         run: |
           echo "Running on ${{ runner.os }}..."
-          sleep 10 # 각 실행 환경에서 10초 대기
+          sleep 10 # 각 실행 환경에서 10초 대기...
           echo "${{ runner.os }} task completed."
 
   test-concurrency:
